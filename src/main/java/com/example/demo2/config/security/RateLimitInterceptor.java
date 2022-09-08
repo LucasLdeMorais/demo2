@@ -19,13 +19,6 @@ public class RateLimitInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) 
       throws Exception {
-        // String apiKey = request.getHeader("X-api-key");
-        // if (apiKey == null || apiKey.isEmpty()) {
-        //     response.sendError(HttpStatus.BAD_REQUEST.value(), "Missing Header: X-api-key");
-        //     return false;
-        // }
-        
-        
 
         Bucket tokenBucket = InfoService.resolveBucket(request);
         ConsumptionProbe probe = tokenBucket.tryConsumeAndReturnRemaining(1);
