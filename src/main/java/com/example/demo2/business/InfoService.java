@@ -32,12 +32,10 @@ public class InfoService {
         return remoteAddr;
     }
     Bandwidth getLimit() {
-        return Bandwidth.classic(1, Refill.intervally(1, Duration.ofMinutes(1)));
+        return Bandwidth.classic(2, Refill.intervally(1, Duration.ofSeconds(10)));
     }
 
     public Bucket newBucket(String clientIp) {
-        //Info Info = Info.resolvePlanFromApiKey(ip);
-        
         return Bucket.builder()
             .addLimit(getLimit())
             .build();
