@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-import com.example.demo2.business.PricingPlanService;
+import com.example.demo2.business.InfoService;
 import io.github.bucket4j.Bucket;
 import io.github.bucket4j.ConsumptionProbe;
 
@@ -14,7 +14,7 @@ import io.github.bucket4j.ConsumptionProbe;
 public class RateLimitInterceptor implements HandlerInterceptor {
 
     @Autowired
-    private PricingPlanService pricingPlanService;
+    private InfoService InfoService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) 
@@ -27,7 +27,7 @@ public class RateLimitInterceptor implements HandlerInterceptor {
         
         
 
-        Bucket tokenBucket = pricingPlanService.resolveBucket(request);
+        Bucket tokenBucket = InfoService.resolveBucket(request);
         ConsumptionProbe probe = tokenBucket.tryConsumeAndReturnRemaining(1);
         if (probe.isConsumed()) {
             response.addHeader("X-Rate-Limit-Remaining", String.valueOf(probe.getRemainingTokens()));

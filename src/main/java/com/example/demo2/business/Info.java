@@ -5,11 +5,11 @@
 // import io.github.bucket4j.Bandwidth;
 // import io.github.bucket4j.Refill;
 
-// public enum PricingPlan {
+// public enum Info {
 
 //     private int bucketCapacity = 5;
     
-//     private PricingPlan(int bucketCapacity) {
+//     private Info(int bucketCapacity) {
 //         this.bucketCapacity = bucketCapacity;
 //     }
     
@@ -21,7 +21,7 @@
 //         return bucketCapacity;
 //     }
     
-    // public static PricingPlan resolvePlanFromApiKey(String apiKey) {
+    // public static Info resolvePlanFromApiKey(String apiKey) {
     //     if (apiKey == null || apiKey.isEmpty()) {
     //         return FREE;
         

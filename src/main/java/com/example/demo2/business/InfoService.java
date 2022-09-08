@@ -12,7 +12,7 @@ import io.github.bucket4j.Bucket;
 import io.github.bucket4j.Refill;
 
 @Service
-public class PricingPlanService {
+public class InfoService {
 
     private final Map<String, Bucket> cache = new ConcurrentHashMap<>();
 
@@ -36,7 +36,7 @@ public class PricingPlanService {
     }
 
     public Bucket newBucket(String clientIp) {
-        //PricingPlan pricingPlan = PricingPlan.resolvePlanFromApiKey(ip);
+        //Info Info = Info.resolvePlanFromApiKey(ip);
         
         return Bucket.builder()
             .addLimit(getLimit())
